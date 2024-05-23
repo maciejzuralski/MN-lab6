@@ -16,9 +16,9 @@ function [country, source, degrees, x_coarse, x_fine, y_original, y_yearly, y_ap
 %   - y_approximation{i} stanowi wartości funkcji aproksymującej w punktach x_fine.
 % mse - wektor o rozmiarze [4,1]: mse(i) zawiera wartość błędu średniokwadratowego obliczonego dla aproksymacji stopnia degrees(i).
 
-country = 'Poland';
-source = 'Coal';
-degrees = [1, 2, 3, 4];
+country = 'USA';
+source = 'Solar';
+degrees = [1, 2, 13, 16];
 y_original = [];
 y_approximation= cell(1,length(degrees));
 mse = [];
@@ -41,12 +41,6 @@ if isfield(energy, country) && isfield(energy.(country), source)
     x_coarse = linspace(0, 1, N)';
     x_fine = linspace(0, 1, P)';
 
-    for i = 1:length(degrees)
-        p = my_polyfit(x_coarse, y_yearly, degrees(i));
-        z = polyval(p, x_fine);
-        my_y_approximation{i} = z;
-    end
-
     for i = 1:N
         X = dct2_custom(y_yearly,i);
         z = idct2_custom(X, i, N, P);
@@ -62,7 +56,7 @@ if isfield(energy, country) && isfield(energy.(country), source)
     hold on;
     plot(x_coarse, y_yearly , 'DisplayName', "Original function");
     for i = 1:length(degrees)
-        plot(x_fine, my_y_approximation{i}, 'DisplayName', "Aproximation for degree = " + num2str(degrees(i)));
+        plot(x_fine, y_approximation{degrees(i)}, 'DisplayName', "Aproximation for degree = " + num2str(degrees(i)));
     end
     hold off;
     title('function aproximations DCT');

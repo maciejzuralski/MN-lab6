@@ -16,8 +16,8 @@ function [country, source, degrees, x_coarse, x_fine, y_original, y_yearly, y_ap
 %   - y_approximation{i} stanowi wartości funkcji aproksymującej w punktach x_fine.
 % mse - wektor o rozmiarze [4,1]: mse(i) zawiera wartość błędu średniokwadratowego obliczonego dla aproksymacji stopnia degrees(i).
 
-country = 'Poland';
-source = 'Coal';
+country = 'USA';
+source = 'Solar';
 degrees = [1, 2, 3, 4];
 y_original = [];
 y_approximation= cell(1,length(degrees));

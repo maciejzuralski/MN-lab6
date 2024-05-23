@@ -11,8 +11,8 @@ function [country, source, degrees, y_original, y_approximation, mse] = zadanie1
 % y_approximation - tablica komórkowa przechowująca cztery wartości funkcji aproksymującej dane wejściowe. y_approximation stanowi aproksymację stopnia degrees(i).
 % mse - wektor o rozmiarze 4x1: mse(i) zawiera wartość błędu średniokwadratowego obliczonego dla aproksymacji stopnia degrees(i).
 
-country = 'Poland';
-source = 'Gas';
+country = 'USA';
+source = 'Solar';
 degrees = [1, 5, 10, 30];
 y_original = [];
 y_approximation= cell(1,length(degrees));

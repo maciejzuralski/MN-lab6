@@ -16,9 +16,9 @@ function [country, source, degrees, x_coarse, x_fine, y_original, y_yearly, y_ap
 %   - y_approximation{i} stanowi wartości funkcji aproksymującej w punktach x_fine.
 % mse - wektor o rozmiarze [4,1]: mse(i) zawiera wartość błędu średniokwadratowego obliczonego dla aproksymacji stopnia degrees(i).
 
-country = 'Poland';
-source = 'Coal';
-degrees = [1, 2, 3, 4];
+country = 'USA';
+source = 'Solar';
+degrees = [1, 2, 16, 18];
 y_original = [];
 y_approximation= cell(1,length(degrees));
 mse = [];
@@ -61,7 +61,7 @@ if isfield(energy, country) && isfield(energy.(country), source)
     hold on;
     plot(x_coarse, y_yearly , 'DisplayName', "Original function");
     for i = 1:length(degrees)
-        plot(x_fine, y_approximation{i}, 'DisplayName', "Aproximation for degree = " + num2str(degrees(i)));
+        plot(x_fine, y_approximation{degrees(i)}, 'DisplayName', "Aproximation for degree = " + num2str(degrees(i)));
     end
     hold off;
     title('function aproximations using my\_polyfit');
